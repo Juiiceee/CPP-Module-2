@@ -1,9 +1,8 @@
 #include "Fixed.hpp"
 
-Fixed::Fixed()
+Fixed::Fixed() : _entier(0)
 {
 	std::cout << "Default constructor called\n";
-	this->entier = 0;
 }
 
 Fixed::Fixed(const Fixed &obj)
@@ -16,7 +15,7 @@ Fixed &Fixed::operator=(const Fixed &obj)
 {
 	std::cout << "Copy assignment operator called\n";
 	if (this != &obj)
-		this->entier = obj.getRawBits();
+		this->_entier = obj.getRawBits();
 	return *this;
 }
 
@@ -28,10 +27,10 @@ Fixed::~Fixed()
 int	Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called\n";
-	return (this->entier);
+	return (this->_entier);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	this->entier = raw;
+	this->_entier = raw;
 }

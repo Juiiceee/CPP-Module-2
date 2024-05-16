@@ -6,8 +6,8 @@
 class Fixed
 {
 	private:
-		int					entier;
-		int const static	nbb;
+		int					_entier;
+		int const static	_nbb;
 	public:
 		Fixed();
 		Fixed(const Fixed &obj);
