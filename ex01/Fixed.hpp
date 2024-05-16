@@ -6,8 +6,8 @@
 class Fixed
 {
 	private:
-		int					entier;
-		int const static	nbb = 8;
+		int					_entier;
+		int const static	_nbb = 8;
 	public:
 		Fixed();
 		Fixed(const int entier);
@@ -20,5 +20,5 @@ class Fixed
 		int		getRawBits(void) const;
 		void	setRawBits(int const raw);
 };
-std::ostream &operator<<( std::ostream &stream, Fixed const &entier);
+std::ostream &operator<<( std::ostream &stream, const Fixed &entier);
 #endif

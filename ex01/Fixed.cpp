@@ -1,21 +1,18 @@
 #include "Fixed.hpp"
 #include <cmath>
 
-Fixed::Fixed()
+Fixed::Fixed() : _entier(0)
 {
 	std::cout << "Default constructor called\n";
-	this->entier = 0;
 }
 
-Fixed::Fixed(const int entier)
+Fixed::Fixed(const int entier) : _entier(entier << this->_nbb)
 {
 	std::cout << "Int constructor called\n";
-	this->entier = entier << this->nbb;
 }
-Fixed::Fixed(const float fl)
+Fixed::Fixed(const float fl) : _entier(roundf(fl * (1 << this->_nbb)))
 {
 	std::cout << "Int constructor called\n";
-	this->entier = roundf(fl * (1 << this->nbb));
 }
 
 Fixed::Fixed(const Fixed &obj)
@@ -28,7 +25,7 @@ Fixed &Fixed::operator=(const Fixed &obj)
 {
 	std::cout << "Copy assignment operator called\n";
 	if (this != &obj)
-		this->entier = obj.getRawBits();
+		this->_entier = obj.getRawBits();
 	return *this;
 }
 
@@ -40,26 +37,26 @@ Fixed::~Fixed()
 int	Fixed::getRawBits() const
 {
 	std::cout << "getRawBits member function called\n";
-	return (this->entier);
+	return (this->_entier);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	this->entier = raw;
+	this->_entier = raw;
 }
 
 float	Fixed::toFloat(void) const
 {
-	return (static_cast<float>(this->entier) / (1 << this->nbb));
+	return (static_cast<float>(this->_entier) / (1 << this->_nbb));
 }
 
 int		Fixed::toInt(void) const
 {
-	return (this->entier >> this->nbb);
+	return (this->_entier >> this->_nbb);
 }
 
-std::ostream & operator<<( std::ostream &stream, Fixed const &entier)
+std::ostream &operator<<( std::ostream &os, const Fixed &entier)
 {
-	stream << entier.toFloat();
-	return stream;
+	os << entier.toFloat();
+	return os;
 }
