@@ -48,7 +48,7 @@ int		Fixed::toInt(void) const
 	return (this->_entier >> this->_nbb);
 }
 
-std::ostream &operator<<( std::ostream &os, const Fixed &entier)
+std::ostream &operator<<(std::ostream &os, const Fixed &entier)
 {
 	os << entier.toFloat();
 	return os;
@@ -76,7 +76,7 @@ bool	Fixed::operator<(const Fixed &obj)
 
 bool	Fixed::operator>=(const Fixed &obj)
 {
-	return (this->getRawBits() > obj.getRawBits() || this->getRawBits() == obj.getRawBits());
+	return (*this > obj || *this == obj);
 }
 
 bool	Fixed::operator<=(const Fixed &obj)
